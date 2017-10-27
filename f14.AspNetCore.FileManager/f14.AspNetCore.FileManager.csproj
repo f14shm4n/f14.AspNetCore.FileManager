@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>f14shm4n</Authors>
+    <Company>f14shm4n</Company>
+    <Description>Backend part for web file manager (https://github.com/f14shm4n/FManager). And contains common classes and helpers for working with file managers.</Description>
+    <Copyright>f14shm4n</Copyright>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="f14.Common" Version="1.0.2" />
+    <PackageReference Include="f14.IO" Version="1.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
 
 </Project>
