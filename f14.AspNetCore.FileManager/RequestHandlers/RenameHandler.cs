@@ -23,7 +23,7 @@ namespace f14.AspNetCore.FileManager.RequestHandlers
             ExHelper.Require(Directory.Exists(fullPath), "Source directory does not exists.");
 
             List<string> errors = new List<string>();
-
+            int affected = 0;
             foreach (var rfi in data.Renames)
             {
                 string srcPath = Path.Combine(fullPath, rfi.OldName);
@@ -39,16 +39,18 @@ namespace f14.AspNetCore.FileManager.RequestHandlers
                     {
                         FileIO.RenameFolder(srcPath, dstPath);
                     }
+                    affected++;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    errors.Add($"Rename failed. Name info: {rfi.OldName} -> {rfi.NewName}");
+                    errors.Add($"Rename failed. Name info: {rfi.OldName} -> {rfi.NewName}. Ex: {ex.Message}");
                 }
             }
 
-            var result = new ResponseData
+            var result = new RenameResponseData
             {
-                Errors = errors
+                Errors = errors,
+                Affected = affected
             };
             return result;
         }

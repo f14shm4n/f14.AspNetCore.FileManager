@@ -5,6 +5,9 @@ using System.Text;
 
 namespace f14.AspNetCore.FileManager.RequestModels
 {
+    /// <summary>
+    /// Base object model for request data.
+    /// </summary>
     public class RequestData
     {
         /// <summary>

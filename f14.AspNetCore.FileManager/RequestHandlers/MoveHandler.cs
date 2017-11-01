@@ -49,35 +49,33 @@ namespace f14.AspNetCore.FileManager.RequestHandlers
                     {
                         if (t.IsFile)
                         {
-                            if (File.Exists(srcObjPath))
+                            if (File.Exists(dstObjPath))
                             {
-                                if (File.Exists(dstObjPath))
-                                {
-                                    File.Delete(dstObjPath);
-                                    File.Move(srcObjPath, dstObjPath);
-                                }
-                                else
-                                {
-                                    File.Move(srcObjPath, dstObjPath);
-                                }
+                                File.Delete(dstObjPath);
+                                File.Move(srcObjPath, dstObjPath);                                
+                            }
+                            else
+                            {
+                                File.Move(srcObjPath, dstObjPath);                                
                             }
                         }
                         else
                         {
                             FileIO.CopyAll(srcObjPath, dstObjPath, data.Overwrite);
+                            Directory.Delete(srcObjPath, true); // Remove folder because the move folder method does not exists by default.
                         }
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
-                    errors.Add($"Move/Copy failed. Name info: {t.Name}");
+                    errors.Add($"Move/Copy failed. Name info: {t.Name} Ex: {ex.Message}");
                 }
             }
 
             var result = new ResponseData
             {
                 Errors = errors
-            };   
+            };
             return result;
         }
     }

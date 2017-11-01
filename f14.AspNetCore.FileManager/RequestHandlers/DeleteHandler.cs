@@ -41,7 +41,7 @@ namespace f14.AspNetCore.FileManager.RequestHandlers
                 }
                 catch(Exception ex)
                 {
-                    errors.Add($"Delete failed. Object name: {n} Message: {ex.Message}");
+                    errors.Add($"Delete failed. Object name: {n} Ex: {ex.Message}");
                 }
             }
 
