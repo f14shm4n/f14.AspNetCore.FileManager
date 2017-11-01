@@ -55,7 +55,7 @@ namespace f14.AspNetCore.FileManager
             RegisterHandler<DeleteHandler, DeleteRequestData>(RequestHandlerKeys.Delete);
             RegisterHandler<RenameHandler, RenameRequestData>(RequestHandlerKeys.Rename);
             RegisterHandlerForMultipleTypes<MoveHandler, MoveRequestData>(RequestHandlerKeys.Move, RequestHandlerKeys.Copy);
-            RegisterHandler<CreateFolderHandler, RequestData>(RequestHandlerKeys.CreateFolder);
+            RegisterHandler<CreateFolderHandler, CreateRequestData>(RequestHandlerKeys.CreateFolder);
         }
 
         #region Public API
