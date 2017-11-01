@@ -14,7 +14,7 @@ This allows me to focus on the target functionality of this project, and allows 
 
 # Install
 
-Nuget: `nuget`
+[Nuget](https://www.nuget.org/packages/f14.AspNetCore.FileManager/1.0.0): `PM> Install-Package f14.AspNetCore.FileManager`
 
 # How To Use
 
