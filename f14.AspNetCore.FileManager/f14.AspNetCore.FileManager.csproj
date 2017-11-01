@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.4</TargetFramework>
     <Authors>f14shm4n</Authors>
     <Company>f14shm4n</Company>
     <Description>Backend part for web file manager (https://github.com/f14shm4n/FManager). And contains common classes and helpers for working with file managers.</Description>
@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="f14.Common" Version="1.0.2" />
     <PackageReference Include="f14.IO" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
