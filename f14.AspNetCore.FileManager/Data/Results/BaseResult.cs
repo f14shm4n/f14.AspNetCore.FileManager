@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager.ResponseModels
+namespace f14.AspNetCore.FileManager.Data.Results
 {
     /// <summary>
     /// Represents the base response data object for the specified request.
     /// </summary>
-    public class ResponseData
+    public class BaseResult
     {
         /// <summary>
         /// Contains the errors that has occurred while handling specified request.
         /// </summary>
-        public IEnumerable<string> Errors { get; set; } = new List<string>();
+        public List<string> Errors { get; set; } = new List<string>();
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using f14.AspNetCore.FileManager.Data.Params;
+using f14.AspNetCore.FileManager.Handlers;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,29 +10,18 @@ namespace f14.AspNetCore.FileManager
     public static class ServiceCollectionExtension
     {
         /// <summary>
-        /// Adds all f14 file manager services with base configuration.
+        /// Adds defaults file manager handlers.
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
         public static IServiceCollection AddF14FileManager(this IServiceCollection services)
-        {            
-            services.AddSingleton<RequestHandlerManager>();
-            return services;
-        }
-        /// <summary>
-        /// Adds all f14 file manager services with user configuration.
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configure">User configuration.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddF14FileManager(this IServiceCollection services, Action<RequestHandlerManager> configure)
         {
-            services.AddSingleton((provider) =>
-            {
-                RequestHandlerManager manager = new RequestHandlerManager();
-                configure(manager);
-                return manager;
-            });
+            services.AddTransient<IOperationHandler<CopyParam>, CopyHandler>();
+            services.AddTransient<IOperationHandler<CreateFolderParam>, CreateFolderHandler>();
+            services.AddTransient<IOperationHandler<DeleteParam>, DeleteHandler>();
+            services.AddTransient<IOperationHandler<FolderStructParam>, FolderStructHandler>();
+            services.AddTransient<IOperationHandler<MoveParam>, MoveHandler>();
+            services.AddTransient<IOperationHandler<RenameParam>, RenameHandler>();
             return services;
         }
     }

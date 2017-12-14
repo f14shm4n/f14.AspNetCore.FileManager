@@ -20,13 +20,14 @@ namespace f14.AspNetCore.FileManager
             string fullPath;
             if (!currentPath.StartsWith(rootPath, StringComparison.OrdinalIgnoreCase))
             {
-                fullPath = System.IO.Path.Combine(rootPath, currentPath.TrimStart('/'));
+                string adjusted = currentPath.TrimStart('/', '\\');
+                fullPath = System.IO.Path.Combine(rootPath, adjusted);
             }
             else
             {
                 fullPath = currentPath;
             }
-            return fullPath;
+            return fullPath.TrimEnd('/', '\\');
         }
     }
 }

@@ -10,14 +10,20 @@
     <PackageProjectUrl>https://github.com/f14shm4n/f14.AspNetCore.FileManager</PackageProjectUrl>
     <RepositoryUrl>https://github.com/f14shm4n/f14.AspNetCore.FileManager</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>netcore;aspnetcore;aspnetcoremvc</PackageTags>
+    <PackageTags>netcore;aspnetcore;aspnetcoremvc;filemanager</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="f14.Common" Version="1.0.2" />
-    <PackageReference Include="f14.IO" Version="1.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\f14.CommonCore\f14.Common\f14.Common.csproj" />
+    <ProjectReference Include="..\..\f14.CommonCore\f14.IO\f14.IO.csproj" />
   </ItemGroup>
 
 </Project>

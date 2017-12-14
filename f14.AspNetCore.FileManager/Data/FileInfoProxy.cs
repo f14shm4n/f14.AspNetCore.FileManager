@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager
+namespace f14.AspNetCore.FileManager.Data
 {
     /// <summary>
-    /// Represents the file system object.
+    /// Represents the proxy object for the file system info.
     /// </summary>
     public class FileInfoProxy
     {

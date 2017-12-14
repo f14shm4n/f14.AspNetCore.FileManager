@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager.RequestModels
+namespace f14.AspNetCore.FileManager.Data.Params
 {
     /// <summary>
-    /// The create object model for the corresponding request.
+    /// Represents the object model for the create folder action request.
     /// </summary>
-    public class CreateRequestData : RequestData
+    public class CreateFolderParam : BaseParam
     {
         /// <summary>
         /// Name of the object that must be created.

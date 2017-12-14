@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace f14.AspNetCore.FileManager.RequestModels
+namespace f14.AspNetCore.FileManager.Data.Params
 {
     /// <summary>
-    /// The file system struct object model for the corresponding request.
+    /// Represents the object model for the folder struct action request.
     /// </summary>
-    public class StructRequestData : RequestData
+    public class FolderStructParam : BaseParam
     {        
         /// <summary>
         /// The file extensions collection.
