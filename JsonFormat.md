@@ -2,34 +2,26 @@
 
 For the data exchange I used json format.
 
-Request:
+The format is separated on the request data and response data:
 
-  [Copy param](#copy-param)
+[Requests](#requests)
+
+[Responses](#responses)
+
+## Requests
+
+[Copy param](#copy-param)
   
-  [Move param](#move-param)
+[Move param](#move-param)
 
-  [Create folder param](#create-folder-param)
+[Create folder param](#create-folder-param)
 
-  [Delete param](#delete-param)
+[Delete param](#delete-param)
 
-  [Folder struct param](#folder-struct-param)
+[Folder struct param](#folder-struct-param)
 
-  [Rename param](#rename-param)
+[Rename param](#rename-param)
   
-Response:
-
-  [Copy result](#copy-result)
-  
-  [Move result](#move-result)
-
-  [Create folder result](#create-folder-result)
-
-  [Delete result](#delete-result)
-
-  [Folder struct result](#folder-struct-result)
-
-  [Rename result](#rename-result)
-
 ### Copy param
 
 This is the json format for the copy request.
@@ -121,10 +113,110 @@ This is the json format for the rename request.
   "CurrentFolderPath": "/"
 }
 ```
+  
+  
+## Responses
+
+[Copy result](#copy-result)
+  
+[Move result](#move-result)
+
+[Create folder result](#create-folder-result)
+
+[Delete result](#delete-result)
+
+[Folder struct result](#folder-struct-result)
+
+[Rename result](#rename-result)
 
 ### Copy result
+
+This is the json format for the copy response.
+
+```
+{
+  "Errors": [ // The collection of the errors which can happen while processing the request.
+    "Error message." // The specified error message.
+  ]
+}
+```
+
 ### Move result
+
+This is the json format for the move response.
+
+```
+{
+  "Errors": [
+    "Error message." 
+  ]
+}
+```
+
 ### Create folder result
+
+This is the json format for the create folder response.
+
+```
+{
+  "Errors": [ 
+    "Error message."
+  ]
+}
+```
+
 ### Delete result
+
+This is the json format for the delete response.
+
+```
+{
+  "Affected": 0, // The count of affected objects.
+  "Errors": [
+    "Error message."
+  ]
+}
+```
+
 ### Folder struct result
+
+This is the json format for the folder struct response.
+
+```
+{
+  "FolderCount": 1, // The count of returned folders.
+  "FileCount": 1, // The count of returned files.
+  "Folders": [ // The folder collections.
+    {
+      "Name": "folder name", // Folder name.
+      "Properties": { // Object properties collection.
+        "Property": "Value" // Property key-value.
+      }
+    }
+  ],
+  "Files": [
+    {
+      "Name": "file.name",
+      "Properties": {
+        "Property": "Value"
+      }
+    }
+  ],
+  "Errors": [
+    "Error message."
+  ]
+}
+```
+
 ### Rename result
+
+This is the json format for the rename response.
+
+```
+{
+  "Affected": 0,
+  "Errors": [
+    "Error message."
+  ]
+}
+```
