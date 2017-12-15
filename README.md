@@ -98,7 +98,7 @@ Do the same thing for the other operation handlers.
 
 `IOperationHandler<RenameParam>` - for rename files and folders.
 
-Or the same but with `IJOperationHandler<T>` for usin build-in json parsing method.
+Or the same but with `IJOperationHandler<T>` for using build-in json parsing method.
 
 # Customizing
 
