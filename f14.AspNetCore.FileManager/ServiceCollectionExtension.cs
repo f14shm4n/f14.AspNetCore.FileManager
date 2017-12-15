@@ -29,7 +29,7 @@ namespace f14.AspNetCore.FileManager
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddFileManagerJsonFileManager(this IServiceCollection services)
+        public static IServiceCollection AddFileManagerJsonHandlers(this IServiceCollection services)
         {
             services.AddTransient<IJOperationHandler<CopyParam>, CopyHandler>();
             services.AddTransient<IJOperationHandler<CreateFolderParam>, CreateFolderHandler>();
