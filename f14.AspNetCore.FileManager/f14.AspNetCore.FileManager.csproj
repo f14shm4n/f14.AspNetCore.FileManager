@@ -12,7 +12,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>netcore;aspnetcore;aspnetcoremvc;filemanager</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
