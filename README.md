@@ -16,7 +16,9 @@ The each handler designed as service for the ServiceCollection to use as Depende
 
 # How To Use
 
-1) First of all you need add a services:
+First off all learn the [format](https://github.com/f14shm4n/f14.AspNetCore.FileManager/blob/master/JsonFormat.md).
+
+1) Add a services:
 
 ```
     using f14.AspNetCore.FileManager; // Add namespace
