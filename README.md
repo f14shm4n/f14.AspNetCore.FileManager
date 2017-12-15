@@ -27,7 +27,7 @@ The each handler designed as service for the ServiceCollection to use as Depende
         // 1) Use this if you want to parse http request data by yourself.
         // services.AddFileManagerHandlers();
         // 2) Use this if you want to the service parse the http request data.
-        // services.AddFileManagerJsonFileManager();
+        // services.AddFileManagerJsonHandlers();
     }
 ```
 
@@ -156,7 +156,7 @@ Also you can replace the default handler by the your handler.
 ```
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddFileManagerJsonFileManager(); // Use default handlers
+        services.AddFileManagerJsonHandlers(); // Use default handlers
         services.AddTransient<IJOperationHandler<CreateFolderParam>, SampleIOHandler>(); // Overwrite default handler
     }
 ```
