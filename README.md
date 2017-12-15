@@ -1,5 +1,3 @@
-# NOT ACTUAL, NEW DESCRIPTION IN PROGRESS
-
 # Intro
 
 Initially, I created this project as the back-end (ASP.NET Core) part of the my own web file manager.
