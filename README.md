@@ -151,7 +151,7 @@ Sample:
     // Use you handler what ever you need it. See #How To Use section.
 ```
 
-###
+### Overwrite default handler
 
 Also you can replace the default handler by the your handler.
 
