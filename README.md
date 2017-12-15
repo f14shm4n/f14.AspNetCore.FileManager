@@ -12,7 +12,7 @@ The each handler designed as service for the ServiceCollection to use as Depende
 
 # Install
 
-[Nuget](https://www.nuget.org/packages/f14.AspNetCore.FileManager/): `PM> Install-Package f14.AspNetCore.FileManager -Version 1.1.1`
+[Nuget](https://www.nuget.org/packages/f14.AspNetCore.FileManager/): `PM> Install-Package f14.AspNetCore.FileManager`
 
 # How To Use
 
