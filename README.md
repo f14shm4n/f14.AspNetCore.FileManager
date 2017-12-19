@@ -120,7 +120,7 @@ Sample:
 
 ```
     // Create you handler class
-    public class SampleIOHandler : BaseMoveHandler<SampleIOParam>
+    public class SampleIOHandler : BaseOperationHandler<SampleIOParam>
     {
         public SampleIOHandler(IHostingEnvironment env) : base(new SampleIOResult(), env)
         {
