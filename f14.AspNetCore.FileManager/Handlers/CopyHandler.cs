@@ -12,7 +12,7 @@ namespace f14.AspNetCore.FileManager.Handlers
     {
     }
 
-    public class CopyHandler : BaseMoveHandler<CopyParam, CopyResult>, ICopyHandler
+    public sealed class CopyHandler : BaseMoveHandler<CopyParam, CopyResult>, ICopyHandler
     {
         public CopyHandler(IHostingEnvironment env) : base(new CopyResult(), env.WebRootPath)
         {

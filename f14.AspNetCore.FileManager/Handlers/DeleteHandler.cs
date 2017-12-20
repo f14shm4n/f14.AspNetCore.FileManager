@@ -12,7 +12,7 @@ namespace f14.AspNetCore.FileManager.Handlers
 
     }
 
-    public class DeleteHandler : BaseOperationHandler<DeleteParam, DeleteResult>, IDeleteHandler
+    public sealed class DeleteHandler : BaseOperationHandler<DeleteParam, DeleteResult>, IDeleteHandler
     {
         public DeleteHandler(IHostingEnvironment env) : base(new DeleteResult(), env.WebRootPath)
         {

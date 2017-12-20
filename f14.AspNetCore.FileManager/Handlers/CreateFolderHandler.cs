@@ -13,7 +13,7 @@ namespace f14.AspNetCore.FileManager.Handlers
 
     }
 
-    public class CreateFolderHandler : BaseOperationHandler<CreateFolderParam, CreateFolderResult>, ICreateFolderHandler
+    public sealed class CreateFolderHandler : BaseOperationHandler<CreateFolderParam, CreateFolderResult>, ICreateFolderHandler
     {
         public CreateFolderHandler(IHostingEnvironment env) : base(new CreateFolderResult(), env.WebRootPath)
         {

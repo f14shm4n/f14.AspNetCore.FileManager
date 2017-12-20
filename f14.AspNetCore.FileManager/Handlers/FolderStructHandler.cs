@@ -15,7 +15,7 @@ namespace f14.AspNetCore.FileManager.Handlers
 
     }
 
-    public class FolderStructHandler : BaseOperationHandler<FolderStructParam, FolderStructResult>, IFolderStructHandler
+    public sealed class FolderStructHandler : BaseOperationHandler<FolderStructParam, FolderStructResult>, IFolderStructHandler
     {
         public FolderStructHandler(IHostingEnvironment env) : base(new FolderStructResult(), env.WebRootPath)
         {

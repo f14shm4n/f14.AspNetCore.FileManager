@@ -13,7 +13,7 @@ namespace f14.AspNetCore.FileManager.Handlers
 
     }
 
-    public class MoveHandler : BaseMoveHandler<MoveParam, MoveResult>, IMoveHandler
+    public sealed class MoveHandler : BaseMoveHandler<MoveParam, MoveResult>, IMoveHandler
     {
         public MoveHandler(IHostingEnvironment env) : base(new MoveResult(), env.WebRootPath)
         {

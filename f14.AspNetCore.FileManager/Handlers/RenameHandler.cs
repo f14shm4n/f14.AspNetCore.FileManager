@@ -13,7 +13,7 @@ namespace f14.AspNetCore.FileManager.Handlers
 
     }
 
-    public class RenameHandler : BaseOperationHandler<RenameParam, RenameResult>, IRenameHandler
+    public sealed class RenameHandler : BaseOperationHandler<RenameParam, RenameResult>, IRenameHandler
     {
         public RenameHandler(IHostingEnvironment env) : base(new RenameResult(), env.WebRootPath)
         {
