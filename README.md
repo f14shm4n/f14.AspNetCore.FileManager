@@ -25,11 +25,8 @@ First off all learn the [format](https://github.com/f14shm4n/f14.AspNetCore.File
 
     public void ConfigureServices(IServiceCollection services)
     {
-        // Adds all default handlers as services.
-        // 1) Use this if you want to parse http request data by yourself.
-        // services.AddFileManagerHandlers();
-        // 2) Use this if you want to the service parse the http request data.
-        // services.AddFileManagerJsonHandlers();
+        // Adds all default handlers as services.        
+        services.AddFileManagerHandlers();
     }
 ```
 
@@ -38,41 +35,26 @@ First off all learn the [format](https://github.com/f14shm4n/f14.AspNetCore.File
 ```
     // Your controller for file manager
     public class FileManagerController : Controller
-    {
+    {       
         // Method to handler request from fronend
-        // Use IOperationHandler if you used first method of service adding in the 1 step.
         [HttpPost]
-        public JsonResult CreateFolder([FromServices]IOperationHandler<CreateFolderParam> handler)
+        public JsonResult CreateFolder([FromServices]ICreateFolderHandler handler)
         {
             // Get json request data
             string requestBody = Request.ReadBody();
             BaseResult result = null;
             try
-            {                
-                var param = JsonConvert.DeserializeObject<CreateFolderParam>(requestBody);
-                result = handler.Run(param);
-            }
-            catch (Exception ex)
             {
-                // log errors
-                return BadRequest(); // Or what you need
-            }
-            return Json(result); // Write result.
-        }
-        
-        === OR ===
-        
-        // Method to handler request from fronend
-        // Use IJOperationHandler if you used second method of service adding in the 1 step.
-        [HttpPost]
-        public JsonResult CreateFolder([FromServices]IJOperationHandler<CreateFolderParam> handler)
-        {
-            // Get json request data
-            string requestBody = Request.ReadBody();
-            BaseResult result = null;
-            try
-            {                
+                // 1) Simple usage
                 result = handler.Run(requestBody);
+                // 2) Using with JsonSerializerSettings
+                // JsonSerializerSettings settings = new JsonSerializerSettings();
+                // ...
+                // result = handler.Run(requestBody, settings);
+                // 3) Using with pre process param
+                // result = handler
+                //     .OnParamParsed(p => <... process the param before run ...>)
+                //     .Run(requestBody);
             }
             catch (Exception ex)
             {
@@ -88,23 +70,21 @@ Do the same thing for the other operation handlers.
 
 # List of build-in operation handlers
 
-`IOperationHandler<CopyParam>` - for copy files and folders.
+`ICopyHandler` - for copy files and folders.
     
-`IOperationHandler<MoveParam>` - for move files and folders.
+`IMoveHandler` - for move files and folders.
 
-`IOperationHandler<CreateFolderParam>` - for create folders.
+`ICreateFolderHandler` - for create folders.
 
-`IOperationHandler<DeleteParam>` - for delete files and folders.
+`IDeleteHandler` - for delete files and folders.
 
-`IOperationHandler<FolderStructParam>` - for receiving file system map.
+`IFolderStructHandler` - for receiving file system map.
 
-`IOperationHandler<RenameParam>` - for rename files and folders.
-
-Or the same but with `IJOperationHandler<T>` for using build-in json parsing method.
+`IRenameHandler` - for rename files and folders.
 
 # Customizing
 
-You can of course create additional handlers or overwrite the default handlers.
+You can create additional handlers or overwrite the default handlers.
 
 ### Custom handler
 
@@ -114,26 +94,27 @@ To create new handlers you can use following classes and interfaces.
 
 `IJOperationHandler` - the next level of the interface for the handler provides json parsing functions.
 
-`BaseOperationHandler` - the abstract class which include base implementation of interfaces above. Use this class as a foundation.
+`BaseOperationHandler` - the abstract class which include base implementation of interfaces above. **Use this class as a base to start.
 
 Sample:
 
 ```
     // Create you handler class
-    public class SampleIOHandler : BaseOperationHandler<SampleIOParam>
+    public class SampleHandler : BaseOperationHandler<SampleParam, SampleResult>
     {
-        public SampleIOHandler(IHostingEnvironment env) : base(new SampleIOResult(), env)
+        public SampleHandler(IHostingEnvironment env, < or any other DI >) : base(new SampleResult(), env.WebRootPath)
         {
         }
 
-        public override BaseResult Run(SampleIOParam param)
+        public override SampleResult Run(SampleParam param)
         {
             // Do any useful action here
-            // Set some useful to the result
+            // Set some useful data into the result
             Result.Var1 = Useful result;
             Result.Var2 = Useful result;
             <...>
-            return Result; // Return result.
+            // Return result.
+            return Result; 
         }
     }
     
@@ -143,12 +124,18 @@ Sample:
     // Add your handler into the service collection.    
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddTransient<IJOperationHandler<SampleIOParam>, SampleIOHandler>();
+        services.AddTransient<IJOperationHandler<SampleParam, SampleResult>, SampleHandler>();
     }
     
     <...........................................>
     
-    // Use you handler what ever you need it. See #How To Use section.
+    // Use your handler in the controller. See #How To Use section.
+    [HttpPost]
+    public JsonResult SampleAction([FromServices]IJOperationHandler<SampleParam, SampleResult> handler)
+    {
+        ...
+    }
+    
 ```
 
 ### Overwrite default handler
@@ -158,8 +145,10 @@ Also you can replace the default handler by the your handler.
 ```
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddFileManagerJsonHandlers(); // Use default handlers
-        services.AddTransient<IJOperationHandler<CreateFolderParam>, SampleIOHandler>(); // Overwrite default handler
+        // Use default handlers
+        services.AddFileManagerJsonHandlers();
+        // Overwrite default handler
+        services.Replace(new ServiceDescriptor(typeof(ICopyHandler), typeof(CustomCopyHandler), ServiceLifetime.Transient));
     }
 ```
 
