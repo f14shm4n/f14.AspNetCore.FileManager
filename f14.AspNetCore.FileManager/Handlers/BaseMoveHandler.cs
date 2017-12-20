@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using f14.IO;
+using f14.AspNetCore.FileManager.Data;
 using f14.AspNetCore.FileManager.Data.Params;
 using f14.AspNetCore.FileManager.Data.Results;
-using Microsoft.AspNetCore.Hosting;
-using f14.AspNetCore.FileManager.Data;
 
 namespace f14.AspNetCore.FileManager.Handlers
 {
-    public abstract class BaseMoveHandler<T> : BaseOperationHandler<T> where T : MoveParam
+    public abstract class BaseMoveHandler<TParam, TResult> : BaseOperationHandler<TParam, TResult>
+        where TParam : MoveParam
+        where TResult : MoveResult
     {
-        public BaseMoveHandler(BaseResult result, IHostingEnvironment env) : base(result, env)
+        public BaseMoveHandler(TResult result, string rootPath) : base(result, rootPath)
         {
         }
 
-        public override BaseResult Run(T param)
+        public override TResult Run(TParam param)
         {
             if (string.IsNullOrWhiteSpace(param.SourceDirectory) || string.IsNullOrWhiteSpace(param.DestinationDirectory))
             {
@@ -30,8 +30,8 @@ namespace f14.AspNetCore.FileManager.Handlers
                 return Result;
             }
 
-            string srcDirPath = PathHelper.GetFullPath(HostEnv.WebRootPath, param.SourceDirectory);
-            string dstDirPath = PathHelper.GetFullPath(HostEnv.WebRootPath, param.DestinationDirectory);
+            string srcDirPath = PathHelper.GetFullPath(RootPath, param.SourceDirectory);
+            string dstDirPath = PathHelper.GetFullPath(RootPath, param.DestinationDirectory);
 
             if (Directory.Exists(srcDirPath) && Directory.Exists(dstDirPath))
             {

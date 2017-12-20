@@ -15,11 +15,11 @@ namespace f14.AspNetCore.FileManager.Data.Results
         /// <summary>
         /// Folders count.
         /// </summary>
-        public int FolderCount { get; set; }
+        public int FolderCount => _folders?.Count ?? 0;
         /// <summary>
         /// Files count.
         /// </summary>        
-        public int FileCount { get; set; }
+        public int FileCount => _files?.Count ?? 0;
         /// <summary>
         /// Folders collection.
         /// </summary>
@@ -36,7 +36,6 @@ namespace f14.AspNetCore.FileManager.Data.Results
             set
             {
                 _folders = value;
-                FolderCount = _folders != null ? _folders.Count : 0;
             }
         }
         /// <summary>
@@ -55,7 +54,6 @@ namespace f14.AspNetCore.FileManager.Data.Results
             set
             {
                 _files = value;
-                FileCount = _files != null ? _files.Count : 0;
             }
         }
     }

@@ -18,11 +18,11 @@ namespace FMTests
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSingleton(provaider => new Mock<IHostingEnvironment>().Object);
-            serviceCollection.AddF14FileManager();
+            serviceCollection.AddFileManagerHandlers();
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            var fmHandler = serviceProvider.GetService<IOperationHandler<FolderStructParam>>();
+            var fmHandler = serviceProvider.GetService<IFolderStructHandler>();
 
             Assert.NotNull(fmHandler);
         }

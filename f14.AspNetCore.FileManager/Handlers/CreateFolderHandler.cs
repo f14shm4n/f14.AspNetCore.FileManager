@@ -1,25 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
+﻿using f14.AspNetCore.FileManager.Abstractions;
 using f14.AspNetCore.FileManager.Data.Params;
 using f14.AspNetCore.FileManager.Data.Results;
 using Microsoft.AspNetCore.Hosting;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace f14.AspNetCore.FileManager.Handlers
 {
-    public class CreateFolderHandler : BaseOperationHandler<CreateFolderParam>
+    public interface ICreateFolderHandler : IOperationHandler<CreateFolderParam, CreateFolderResult>, IJOperationHandler<CreateFolderParam, CreateFolderResult>
     {
-        public CreateFolderHandler(IHostingEnvironment env) : base(new CreateFolderResult(), env)
+
+    }
+
+    public class CreateFolderHandler : BaseOperationHandler<CreateFolderParam, CreateFolderResult>, ICreateFolderHandler
+    {
+        public CreateFolderHandler(IHostingEnvironment env) : base(new CreateFolderResult(), env.WebRootPath)
         {
         }
 
-        public override BaseResult Run(CreateFolderParam param)
+        public override CreateFolderResult Run(CreateFolderParam param)
         {
             ExHelper.NotNull(() => param);
 
-            string fullPath = PathHelper.GetFullPath(HostEnv.WebRootPath, param.CurrentFolderPath);
+            string fullPath = PathHelper.GetFullPath(RootPath, param.CurrentFolderPath);
 
             if (Directory.Exists(fullPath))
             {

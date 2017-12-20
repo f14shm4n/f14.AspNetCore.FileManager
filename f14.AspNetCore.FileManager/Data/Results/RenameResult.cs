@@ -9,6 +9,9 @@ namespace f14.AspNetCore.FileManager.Data.Results
     /// </summary>
     public class RenameResult : AffectedResult
     {
-
+        /// <summary>
+        /// The objects that have been renamed.
+        /// </summary>
+        public List<RenameActionTarget> RenamedObjects { get; set; } = new List<RenameActionTarget>();
     }
 }

@@ -1,4 +1,6 @@
-﻿using f14.AspNetCore.FileManager.Data.Params;
+﻿using f14.AspNetCore.FileManager.Abstractions;
+using f14.AspNetCore.FileManager.Data.Params;
+using f14.AspNetCore.FileManager.Data.Results;
 using f14.AspNetCore.FileManager.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -16,27 +18,12 @@ namespace f14.AspNetCore.FileManager
         /// <returns></returns>
         public static IServiceCollection AddFileManagerHandlers(this IServiceCollection services)
         {
-            services.AddTransient<IOperationHandler<CopyParam>, CopyHandler>();
-            services.AddTransient<IOperationHandler<CreateFolderParam>, CreateFolderHandler>();
-            services.AddTransient<IOperationHandler<DeleteParam>, DeleteHandler>();
-            services.AddTransient<IOperationHandler<FolderStructParam>, FolderStructHandler>();
-            services.AddTransient<IOperationHandler<MoveParam>, MoveHandler>();
-            services.AddTransient<IOperationHandler<RenameParam>, RenameHandler>();
-            return services;
-        }
-        /// <summary>
-        /// Adds defaults file manager handlers as the <see cref="IJOperationHandler{T}"/> to use build-in json parser functions.
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddFileManagerJsonHandlers(this IServiceCollection services)
-        {
-            services.AddTransient<IJOperationHandler<CopyParam>, CopyHandler>();
-            services.AddTransient<IJOperationHandler<CreateFolderParam>, CreateFolderHandler>();
-            services.AddTransient<IJOperationHandler<DeleteParam>, DeleteHandler>();
-            services.AddTransient<IJOperationHandler<FolderStructParam>, FolderStructHandler>();
-            services.AddTransient<IJOperationHandler<MoveParam>, MoveHandler>();
-            services.AddTransient<IJOperationHandler<RenameParam>, RenameHandler>();
+            services.AddTransient<ICopyHandler, CopyHandler>();
+            services.AddTransient<ICreateFolderHandler, CreateFolderHandler>();
+            services.AddTransient<IDeleteHandler, DeleteHandler>();
+            services.AddTransient<IFolderStructHandler, FolderStructHandler>();
+            services.AddTransient<IMoveHandler, MoveHandler>();
+            services.AddTransient<IRenameHandler, RenameHandler>();
             return services;
         }
     }

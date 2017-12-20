@@ -1,18 +1,21 @@
-﻿using f14.AspNetCore.FileManager.Data.Params;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using f14.AspNetCore.FileManager.Abstractions;
+using f14.AspNetCore.FileManager.Data;
+using f14.AspNetCore.FileManager.Data.Params;
 using f14.AspNetCore.FileManager.Data.Results;
+using f14.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
-using f14.IO;
-using f14.AspNetCore.FileManager.Data;
 
 namespace f14.AspNetCore.FileManager.Handlers
 {
-    public class MoveHandler : BaseMoveHandler<MoveParam>
+    public interface IMoveHandler : IOperationHandler<MoveParam, MoveResult>, IJOperationHandler<MoveParam, MoveResult>
     {
-        public MoveHandler(IHostingEnvironment env) : base(new MoveResult(), env)
+
+    }
+
+    public class MoveHandler : BaseMoveHandler<MoveParam, MoveResult>, IMoveHandler
+    {
+        public MoveHandler(IHostingEnvironment env) : base(new MoveResult(), env.WebRootPath)
         {
         }
 

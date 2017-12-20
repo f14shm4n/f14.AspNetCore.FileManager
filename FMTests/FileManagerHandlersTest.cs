@@ -353,6 +353,29 @@ namespace FMTests
             Assert.True(result.Errors.Count == 0);
         }
 
+        [Fact]
+        public void OnParamParsed()
+        {
+            const string TEST_FOLDER_NAME = "TestNewFolder";
+            const string TEST_FOLDER_NAME_2 = "TestNewFolder_2";
+            const string TEST_FOLDER_PATH = ROOT_TEST_PATH + "\\" + TEST_FOLDER_NAME_2;
+
+            var json = JsonConvert.SerializeObject(new CreateFolderParam
+            {
+                CurrentFolderPath = "/",
+                Name = TEST_FOLDER_NAME
+            });
+
+            var result = new CreateFolderHandler(CreateHostingEnv())
+                .OnParamParsed(p => p.Name = TEST_FOLDER_NAME_2)
+                .Run(json);
+
+            PrintErrors(result.Errors);
+                        
+            Assert.True(Directory.Exists(TEST_FOLDER_PATH));
+            Assert.True(result.Errors.Count == 0);
+        }
+
         #endregion
 
         #region Helpers

@@ -1,18 +1,20 @@
-﻿using f14.AspNetCore.FileManager.Data.Params;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using f14.AspNetCore.FileManager.Abstractions;
+using f14.AspNetCore.FileManager.Data;
+using f14.AspNetCore.FileManager.Data.Params;
 using f14.AspNetCore.FileManager.Data.Results;
+using f14.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
-using f14.IO;
-using f14.AspNetCore.FileManager.Data;
 
 namespace f14.AspNetCore.FileManager.Handlers
 {
-    public class CopyHandler : BaseMoveHandler<CopyParam>
+    public interface ICopyHandler : IOperationHandler<CopyParam, CopyResult>, IJOperationHandler<CopyParam, CopyResult>
     {
-        public CopyHandler(IHostingEnvironment env) : base(new CopyResult(), env)
+    }
+
+    public class CopyHandler : BaseMoveHandler<CopyParam, CopyResult>, ICopyHandler
+    {
+        public CopyHandler(IHostingEnvironment env) : base(new CopyResult(), env.WebRootPath)
         {
         }
 

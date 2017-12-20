@@ -125,8 +125,6 @@ namespace FormatGenerator
                 {
                     "Error message."
                 },
-                FileCount = 0,
-                FolderCount = 0,
                 Files = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.FileInfoProxy>
                 {
                     new f14.AspNetCore.FileManager.Data.FileInfoProxy
@@ -157,6 +155,15 @@ namespace FormatGenerator
                 Errors = new System.Collections.Generic.List<string>
                 {
                     "Error message."
+                },
+                RenamedObjects = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.RenameActionTarget>()
+                {
+                    new f14.AspNetCore.FileManager.Data.RenameActionTarget
+                    {
+                        IsFile = true,
+                        Name = "new name",
+                        OldName = "old name"
+                    }
                 }
             };
 

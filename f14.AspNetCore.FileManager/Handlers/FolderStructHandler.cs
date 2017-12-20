@@ -1,23 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using f14.IO;
-using System.Linq;
+﻿using f14.AspNetCore.FileManager.Abstractions;
+using f14.AspNetCore.FileManager.Data;
 using f14.AspNetCore.FileManager.Data.Params;
 using f14.AspNetCore.FileManager.Data.Results;
+using f14.IO;
 using Microsoft.AspNetCore.Hosting;
-using f14.AspNetCore.FileManager.Data;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace f14.AspNetCore.FileManager.Handlers
 {
-    public class FolderStructHandler : BaseOperationHandler<FolderStructParam>
+    public interface IFolderStructHandler : IOperationHandler<FolderStructParam, FolderStructResult>, IJOperationHandler<FolderStructParam, FolderStructResult>
     {
-        public FolderStructHandler(IHostingEnvironment env) : base(new FolderStructResult(), env)
+
+    }
+
+    public class FolderStructHandler : BaseOperationHandler<FolderStructParam, FolderStructResult>, IFolderStructHandler
+    {
+        public FolderStructHandler(IHostingEnvironment env) : base(new FolderStructResult(), env.WebRootPath)
         {
         }
 
-        public override BaseResult Run(FolderStructParam param)
+        public override FolderStructResult Run(FolderStructParam param)
         {
             ExHelper.NotNull(() => param);
 
@@ -26,7 +30,7 @@ namespace f14.AspNetCore.FileManager.Handlers
                 param.FileExtensions = new string[0];
             }
 
-            string fullPath = PathHelper.GetFullPath(HostEnv.WebRootPath, param.CurrentFolderPath);
+            string fullPath = PathHelper.GetFullPath(RootPath, param.CurrentFolderPath);
 
             if (Directory.Exists(fullPath))
             {
@@ -37,11 +41,8 @@ namespace f14.AspNetCore.FileManager.Handlers
                         .Select(x => new FileInfoProxy { Name = x.Name }).ToList();
                     var folders = dir.EnumerateDirectories().Select(x => new FileInfoProxy { Name = x.Name }).ToList();
 
-                    DoWithResult<FolderStructResult>(r =>
-                    {
-                        r.Folders = folders;
-                        r.Files = files;
-                    });
+                    Result.Folders = folders;
+                    Result.Files = files;
                 }
                 catch (Exception ex)
                 {

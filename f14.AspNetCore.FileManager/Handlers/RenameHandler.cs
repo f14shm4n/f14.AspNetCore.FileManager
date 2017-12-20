@@ -1,25 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using f14.IO;
+﻿using f14.AspNetCore.FileManager.Abstractions;
 using f14.AspNetCore.FileManager.Data.Params;
 using f14.AspNetCore.FileManager.Data.Results;
+using f14.IO;
 using Microsoft.AspNetCore.Hosting;
+using System;
+using System.IO;
 
 namespace f14.AspNetCore.FileManager.Handlers
 {
-    public class RenameHandler : BaseOperationHandler<RenameParam>
+    public interface IRenameHandler : IOperationHandler<RenameParam, RenameResult>, IJOperationHandler<RenameParam, RenameResult>
     {
-        public RenameHandler(IHostingEnvironment env) : base(new RenameResult(), env)
+
+    }
+
+    public class RenameHandler : BaseOperationHandler<RenameParam, RenameResult>, IRenameHandler
+    {
+        public RenameHandler(IHostingEnvironment env) : base(new RenameResult(), env.WebRootPath)
         {
         }
 
-        public override BaseResult Run(RenameParam param)
+        public override RenameResult Run(RenameParam param)
         {
             ExHelper.NotNull(() => param);
 
-            string fullPath = PathHelper.GetFullPath(HostEnv.WebRootPath, param.CurrentFolderPath);
+            string fullPath = PathHelper.GetFullPath(RootPath, param.CurrentFolderPath);
 
             if (Directory.Exists(fullPath))
             {
@@ -40,7 +44,9 @@ namespace f14.AspNetCore.FileManager.Handlers
                             {
                                 FileIO.RenameFolder(srcPath, dstPath);
                             }
-                            DoWithResult<AffectedResult>(r => r.Affected++);
+
+                            Result.Affected++;
+                            Result.RenamedObjects.Add(rfi);
                         }
                         catch (Exception ex)
                         {
