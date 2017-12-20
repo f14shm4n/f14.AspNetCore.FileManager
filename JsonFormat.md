@@ -214,6 +214,13 @@ This is the json format for the rename response.
 
 ```
 {
+  "RenamedObjects": [ // The objects that have been renamed.
+    {
+      "OldName": "old name", // Old name
+      "Name": "new name", // New name (current file or folder name)
+      "IsFile": true // File or folder flag
+    }
+  ],
   "Affected": 0,
   "Errors": [
     "Error message."
