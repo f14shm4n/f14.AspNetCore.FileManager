@@ -44,15 +44,7 @@ First off all learn the [format](https://github.com/f14shm4n/f14.AspNetCore.File
             string requestBody = Request.ReadBody();
             try
             {
-                // 1) Simple usage
-                // BaseResult result = handler.Run(requestBody);
-                
-                // 3) Using with pre process param
-                // BaseResult result = handler
-                //     .OnParamParsed(p => <... process the param before run ...>)
-                //     .Run(requestBody);
-                
-                // Write result.
+                BaseResult result = handler.Run(requestBody);
                 return Json(result); 
             }
             catch (Exception ex)
