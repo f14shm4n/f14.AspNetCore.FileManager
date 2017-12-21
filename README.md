@@ -38,30 +38,28 @@ First off all learn the [format](https://github.com/f14shm4n/f14.AspNetCore.File
     {       
         // Method to handler request from fronend
         [HttpPost]
-        public JsonResult CreateFolder([FromServices]ICreateFolderHandler handler)
+        public IActionResult CreateFolder([FromServices]ICreateFolderHandler handler)
         {
             // Get json request data
             string requestBody = Request.ReadBody();
-            BaseResult result = null;
             try
             {
                 // 1) Simple usage
-                result = handler.Run(requestBody);
-                // 2) Using with JsonSerializerSettings
-                // JsonSerializerSettings settings = new JsonSerializerSettings();
-                // ...
-                // result = handler.Run(requestBody, settings);
+                // BaseResult result = handler.Run(requestBody);
+                
                 // 3) Using with pre process param
-                // result = handler
+                // BaseResult result = handler
                 //     .OnParamParsed(p => <... process the param before run ...>)
                 //     .Run(requestBody);
+                
+                // Write result.
+                return Json(result); 
             }
             catch (Exception ex)
             {
                 // log errors
                 return BadRequest(); // Or what you need
-            }
-            return Json(result); // Write result.
+            }            
         }
     }
 ```
