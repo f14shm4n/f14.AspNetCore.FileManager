@@ -84,7 +84,7 @@ To create new handlers you can use following classes and interfaces.
 
 `IJOperationHandler` - the next level of the interface for the handler provides json parsing functions.
 
-`BaseOperationHandler` - the abstract class which include base implementation of interfaces above. **Use this class as a base to start.
+`BaseOperationHandler` - the abstract class which include base implementation of interfaces above. **Use this class as a base to start.**
 
 Sample:
 
