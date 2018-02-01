@@ -4,6 +4,8 @@ Initially, I created this project as the back-end (ASP.NET Core) part of the my 
 
 But you can use it as a backend for any other application with similar functionality.
 
+For this backend lib, there is a ready-made frontend solution for [js\ts](https://github.com/f14shm4n/FManager).
+
 ### What is it?
 
 This lib provides several base handlers for the file manager requests.
