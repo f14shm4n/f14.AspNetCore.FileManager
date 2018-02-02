@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager.Data
+namespace f14.AspNetCore.FileManager
 {
     /// <summary>
     /// Represents the object model for the rename action target.

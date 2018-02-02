@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager.Data.Results
+namespace f14.AspNetCore.FileManager
 {
     /// <summary>
     /// Represents the response data object for the file system struct request.

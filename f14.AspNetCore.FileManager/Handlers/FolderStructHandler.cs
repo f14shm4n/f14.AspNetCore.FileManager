@@ -1,26 +1,35 @@
-﻿using f14.AspNetCore.FileManager.Abstractions;
-using f14.AspNetCore.FileManager.Data;
-using f14.AspNetCore.FileManager.Data.Params;
-using f14.AspNetCore.FileManager.Data.Results;
-using f14.IO;
+﻿using f14.IO;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace f14.AspNetCore.FileManager.Handlers
+namespace f14.AspNetCore.FileManager
 {
+    /// <summary>
+    /// A short interface wrapper for the retrieving folder struct action to use in service collection.
+    /// </summary>
     public interface IFolderStructHandler : IOperationHandler<FolderStructParam, FolderStructResult>, IJOperationHandler<FolderStructParam, FolderStructResult>
     {
 
     }
-
+    /// <summary>
+    /// The folder struct action implementation.
+    /// </summary>
     public sealed class FolderStructHandler : BaseOperationHandler<FolderStructParam, FolderStructResult>, IFolderStructHandler
     {
+        /// <summary>
+        /// Creates new instance of folder struct handler.
+        /// </summary>
+        /// <param name="env">The hosting environment.</param>
         public FolderStructHandler(IHostingEnvironment env) : base(new FolderStructResult(), env.WebRootPath)
         {
         }
-
+        /// <summary>
+        /// Run folder struct action.
+        /// </summary>
+        /// <param name="param">Folder struct param.</param>
+        /// <returns>Folder struct  result.</returns>
         public override FolderStructResult Run(FolderStructParam param)
         {
             ExHelper.NotNull(() => param);

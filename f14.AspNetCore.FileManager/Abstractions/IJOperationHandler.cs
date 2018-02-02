@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager.Abstractions
+namespace f14.AspNetCore.FileManager
 {
     /// <summary>
     /// Provides a basic interface for processing requests from the user, this interface can parse <see cref="BaseParam"/> from json string.

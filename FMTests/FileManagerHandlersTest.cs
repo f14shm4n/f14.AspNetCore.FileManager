@@ -1,6 +1,4 @@
 ﻿using f14.AspNetCore.FileManager;
-using f14.AspNetCore.FileManager.Handlers;
-using f14.AspNetCore.FileManager.Data.Params;
 using f14.IO;
 using Microsoft.AspNetCore.Hosting;
 using Moq;
@@ -13,8 +11,6 @@ using System.Linq;
 using System.Text;
 using Xunit;
 using Xunit.Abstractions;
-using f14.AspNetCore.FileManager.Data.Results;
-using f14.AspNetCore.FileManager.Data;
 
 namespace FMTests
 {

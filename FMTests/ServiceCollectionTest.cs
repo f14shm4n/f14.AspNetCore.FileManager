@@ -1,17 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using f14.AspNetCore.FileManager;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Moq;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using f14.AspNetCore.FileManager;
-using f14.AspNetCore.FileManager.Handlers;
-using f14.AspNetCore.FileManager.Data.Params;
-using Microsoft.AspNetCore.Hosting;
-using f14.AspNetCore.FileManager.Data.Results;
 using System.IO;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Xunit;
 
 namespace FMTests
 {

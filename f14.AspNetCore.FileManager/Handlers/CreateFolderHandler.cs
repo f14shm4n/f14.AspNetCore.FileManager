@@ -1,24 +1,34 @@
-﻿using f14.AspNetCore.FileManager.Abstractions;
-using f14.AspNetCore.FileManager.Data.Params;
-using f14.AspNetCore.FileManager.Data.Results;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace f14.AspNetCore.FileManager.Handlers
+namespace f14.AspNetCore.FileManager
 {
+    /// <summary>
+    /// A short interface wrapper for the create folder action to use in service collection.
+    /// </summary>
     public interface ICreateFolderHandler : IOperationHandler<CreateFolderParam, CreateFolderResult>, IJOperationHandler<CreateFolderParam, CreateFolderResult>
     {
 
     }
-
+    /// <summary>
+    /// The create folder action implementation.
+    /// </summary>
     public sealed class CreateFolderHandler : BaseOperationHandler<CreateFolderParam, CreateFolderResult>, ICreateFolderHandler
     {
+        /// <summary>
+        /// Creates new instance of create folder handler.
+        /// </summary>
+        /// <param name="env">The hosting environment.</param>
         public CreateFolderHandler(IHostingEnvironment env) : base(new CreateFolderResult(), env.WebRootPath)
         {
         }
-
+        /// <summary>
+        /// Run create folder action.
+        /// </summary>
+        /// <param name="param">Create folder param.</param>
+        /// <returns>Create folder result.</returns>
         public override CreateFolderResult Run(CreateFolderParam param)
         {
             ExHelper.NotNull(() => param);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace f14.AspNetCore.FileManager.Data.Params
+namespace f14.AspNetCore.FileManager
 {
     /// <summary>
     /// Represents the object model for the folder struct action request.

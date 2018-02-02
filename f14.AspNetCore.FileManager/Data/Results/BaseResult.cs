@@ -1,9 +1,8 @@
-﻿using f14.AspNetCore.FileManager.Abstractions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager.Data.Results
+namespace f14.AspNetCore.FileManager
 {
     /// <summary>
     /// Represents the base response data object for the specified request.

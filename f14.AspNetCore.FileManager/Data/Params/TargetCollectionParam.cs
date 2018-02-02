@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace f14.AspNetCore.FileManager.Data.Params
+namespace f14.AspNetCore.FileManager
 {
     /// <summary>
     /// Represents the base object model for the action with generic collections of the targets.

@@ -1,5 +1,4 @@
-﻿using f14.AspNetCore.FileManager.Data.Params;
-using f14.AspNetCore.FileManager.Data.Results;
+﻿using f14.AspNetCore.FileManager;
 using f14.IO;
 using Newtonsoft.Json;
 using System;
@@ -21,9 +20,9 @@ namespace FormatGenerator
                 SourceDirectory = "/",
                 DestinationDirectory = "/",
                 Overwrite = false,
-                Targets = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.BaseActionTarget>
+                Targets = new System.Collections.Generic.List<BaseActionTarget>
                 {
-                    new f14.AspNetCore.FileManager.Data.BaseActionTarget
+                    new BaseActionTarget
                     {
                         IsFile = true,
                         Name = "sample.txt"
@@ -37,9 +36,9 @@ namespace FormatGenerator
                 SourceDirectory = "/",
                 DestinationDirectory = "/",
                 Overwrite = false,
-                Targets = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.BaseActionTarget>
+                Targets = new System.Collections.Generic.List<BaseActionTarget>
                 {
-                    new f14.AspNetCore.FileManager.Data.BaseActionTarget
+                    new BaseActionTarget
                     {
                         IsFile = true,
                         Name = "sample.txt"
@@ -71,9 +70,9 @@ namespace FormatGenerator
             var p_rename = new RenameParam
             {
                 CurrentFolderPath = "/",
-                Targets = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.RenameActionTarget>
+                Targets = new System.Collections.Generic.List<RenameActionTarget>
                  {
-                     new f14.AspNetCore.FileManager.Data.RenameActionTarget
+                     new RenameActionTarget
                      {
                          IsFile = true,
                          Name = "new name",
@@ -125,9 +124,9 @@ namespace FormatGenerator
                 {
                     "Error message."
                 },
-                Files = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.FileInfoProxy>
+                Files = new System.Collections.Generic.List<FileInfoProxy>
                 {
-                    new f14.AspNetCore.FileManager.Data.FileInfoProxy
+                    new FileInfoProxy
                     {
                         Name = "file.name",
                         Properties = new System.Collections.Generic.Dictionary<string, string>
@@ -136,9 +135,9 @@ namespace FormatGenerator
                         }
                     }
                 },
-                Folders = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.FileInfoProxy>
+                Folders = new System.Collections.Generic.List<FileInfoProxy>
                 {
-                    new f14.AspNetCore.FileManager.Data.FileInfoProxy
+                    new FileInfoProxy
                     {
                         Name = "folder name",
                         Properties = new System.Collections.Generic.Dictionary<string, string>
@@ -156,9 +155,9 @@ namespace FormatGenerator
                 {
                     "Error message."
                 },
-                RenamedObjects = new System.Collections.Generic.List<f14.AspNetCore.FileManager.Data.RenameActionTarget>()
+                RenamedObjects = new System.Collections.Generic.List<RenameActionTarget>()
                 {
-                    new f14.AspNetCore.FileManager.Data.RenameActionTarget
+                    new RenameActionTarget
                     {
                         IsFile = true,
                         Name = "new name",

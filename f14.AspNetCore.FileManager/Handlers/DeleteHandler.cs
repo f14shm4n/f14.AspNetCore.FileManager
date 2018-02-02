@@ -1,23 +1,33 @@
-﻿using f14.AspNetCore.FileManager.Abstractions;
-using f14.AspNetCore.FileManager.Data.Params;
-using f14.AspNetCore.FileManager.Data.Results;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using System;
 using System.IO;
 
-namespace f14.AspNetCore.FileManager.Handlers
+namespace f14.AspNetCore.FileManager
 {
+    /// <summary>
+    /// A short interface wrapper for the delete action to use in service collection.
+    /// </summary>
     public interface IDeleteHandler : IOperationHandler<DeleteParam, DeleteResult>, IJOperationHandler<DeleteParam, DeleteResult>
     {
 
     }
-
+    /// <summary>
+    /// The delete action implementation.
+    /// </summary>
     public sealed class DeleteHandler : BaseOperationHandler<DeleteParam, DeleteResult>, IDeleteHandler
     {
+        /// <summary>
+        /// Creates new instance of delete handler.
+        /// </summary>
+        /// <param name="env">The hosting environment.</param>
         public DeleteHandler(IHostingEnvironment env) : base(new DeleteResult(), env.WebRootPath)
         {
         }
-
+        /// <summary>
+        /// Run delete action.
+        /// </summary>
+        /// <param name="param">Delete param.</param>
+        /// <returns>Delete result.</returns>
         public override DeleteResult Run(DeleteParam param)
         {
             ExHelper.NotNull(() => param);
