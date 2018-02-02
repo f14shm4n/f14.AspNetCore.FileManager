@@ -4,6 +4,8 @@ Initially, I created this project as the back-end (ASP.NET Core) part of the my 
 
 But you can use it as a backend for any other application with similar functionality.
 
+For this backend lib, there is a ready-made frontend solution for [js\ts](https://github.com/f14shm4n/FManager).
+
 ### What is it?
 
 This lib provides several base handlers for the file manager requests.
@@ -38,30 +40,20 @@ First off all learn the [format](https://github.com/f14shm4n/f14.AspNetCore.File
     {       
         // Method to handler request from fronend
         [HttpPost]
-        public JsonResult CreateFolder([FromServices]ICreateFolderHandler handler)
+        public IActionResult CreateFolder([FromServices]ICreateFolderHandler handler)
         {
             // Get json request data
             string requestBody = Request.ReadBody();
-            BaseResult result = null;
             try
             {
-                // 1) Simple usage
-                result = handler.Run(requestBody);
-                // 2) Using with JsonSerializerSettings
-                // JsonSerializerSettings settings = new JsonSerializerSettings();
-                // ...
-                // result = handler.Run(requestBody, settings);
-                // 3) Using with pre process param
-                // result = handler
-                //     .OnParamParsed(p => <... process the param before run ...>)
-                //     .Run(requestBody);
+                BaseResult result = handler.Run(requestBody);
+                return Json(result); 
             }
             catch (Exception ex)
             {
                 // log errors
                 return BadRequest(); // Or what you need
-            }
-            return Json(result); // Write result.
+            }            
         }
     }
 ```
@@ -94,7 +86,7 @@ To create new handlers you can use following classes and interfaces.
 
 `IJOperationHandler` - the next level of the interface for the handler provides json parsing functions.
 
-`BaseOperationHandler` - the abstract class which include base implementation of interfaces above. **Use this class as a base to start.
+`BaseOperationHandler` - the abstract class which include base implementation of interfaces above. **Use this class as a base to start.**
 
 Sample:
 
