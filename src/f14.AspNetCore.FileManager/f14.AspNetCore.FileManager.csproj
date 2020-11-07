@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>f14shm4n</Authors>
+    <Company>f14shm4n</Company>
+    <Description>Backend part for web file manager (https://github.com/f14shm4n/FManager). And contains common classes and helpers for working with file managers.</Description>
+    <Copyright>f14shm4n</Copyright>
+    <PackageProjectUrl>https://github.com/f14shm4n/f14.AspNetCore.FileManager</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/f14shm4n/f14.AspNetCore.FileManager</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>netcore;aspnetcore;aspnetcoremvc;filemanager</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
+    <Version>1.2.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DocumentationFile>bin\Release\netstandard1.5\f14.AspNetCore.FileManager.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="f14.Common" Version="2.1.7.1" />
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <NoWarn>1591;1701;1702;1705;1584;1658</NoWarn>
+    <CodeAnalysisRuleSet>../../f14.Toolkit.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+</Project>
