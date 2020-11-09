@@ -7,13 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C420E1CB-176
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "f14.AspNetCore.FileManager", "src\f14.AspNetCore.FileManager\f14.AspNetCore.FileManager.csproj", "{188BE581-8B33-44B1-A09C-24C4E46B0368}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{4C1EA55B-64B6-46CF-A476-3D17B877A4DB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D03C6177-8E87-42AD-B517-263393D5ED9B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "f14.AspNetCore.FileManager.Tests", "src\Tests\f14.AspNetCore.FileManager.Tests\f14.AspNetCore.FileManager.Tests.csproj", "{09CCA397-08D4-41D1-BF2C-BBBE935E4A1D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormatGenerator", "src\Tools\FormatGenerator\FormatGenerator.csproj", "{74A8389D-6BD0-41BF-977F-947BB7260139}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rules", "rules", "{418A3AEC-9851-4224-B05F-B591CBAB29AB}"
 	ProjectSection(SolutionItems) = preProject
@@ -34,10 +30,6 @@ Global
 		{09CCA397-08D4-41D1-BF2C-BBBE935E4A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09CCA397-08D4-41D1-BF2C-BBBE935E4A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09CCA397-08D4-41D1-BF2C-BBBE935E4A1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74A8389D-6BD0-41BF-977F-947BB7260139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74A8389D-6BD0-41BF-977F-947BB7260139}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74A8389D-6BD0-41BF-977F-947BB7260139}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74A8389D-6BD0-41BF-977F-947BB7260139}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,7 +37,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{188BE581-8B33-44B1-A09C-24C4E46B0368} = {C420E1CB-1761-45E9-BF27-2027AADE3C6E}
 		{09CCA397-08D4-41D1-BF2C-BBBE935E4A1D} = {D03C6177-8E87-42AD-B517-263393D5ED9B}
-		{74A8389D-6BD0-41BF-977F-947BB7260139} = {4C1EA55B-64B6-46CF-A476-3D17B877A4DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4B12D60-9B82-4415-B7D7-8851F58F0321}

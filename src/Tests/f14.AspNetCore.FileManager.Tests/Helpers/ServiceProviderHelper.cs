@@ -1,20 +1,19 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace f14.AspNetCore.FileManager.Tests.Helpers
 {
     internal static class ServiceProviderHelper
     {
-        public static IServiceProvider GetService()
+        public static IServiceCollection GetServiceCollection()
         {
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddSingleton(provaider => MockHelper.GetWebHostEnvironment());
-            serviceCollection.AddMediatR(typeof(FileManagerAssemblyBeacon).Assembly);
-
-            return serviceCollection.BuildServiceProvider();
+            var services = new ServiceCollection();
+            services.AddSingleton(provaider => MockHelper.GetWebHostEnvironment());
+            services.AddMediatR(typeof(FileManagerAssemblyBeacon).Assembly);
+            return services;
         }
+
+        public static IServiceProvider GetServiceProvider() => GetServiceCollection().BuildServiceProvider();
     }
 }

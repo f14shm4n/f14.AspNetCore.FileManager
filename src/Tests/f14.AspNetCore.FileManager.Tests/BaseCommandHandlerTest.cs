@@ -16,7 +16,7 @@ namespace f14.AspNetCore.FileManager.Tests
             {
                 if (_mediator == null)
                 {
-                    _mediator = ServiceProviderHelper.GetService().GetService<IMediator>();
+                    _mediator = ServiceProviderHelper.GetServiceProvider().GetService<IMediator>();
                 }
                 return _mediator;
             }

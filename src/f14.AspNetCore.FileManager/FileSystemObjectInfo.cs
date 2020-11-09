@@ -18,6 +18,17 @@ namespace f14.AspNetCore.FileManager
         }
 
         /// <summary>
+        /// Creates new instance of the object.
+        /// </summary>
+        /// <param name="name">Object name.</param>
+        /// <param name="properties">Object properties.</param>
+        public FileSystemObjectInfo(string name, Dictionary<string, string> properties)
+        {
+            Name = name;
+            Properties = properties;
+        }
+
+        /// <summary>
         /// The file or folder name.
         /// <para>Includes only name of object, not the path to the object.</para>
         /// </summary>
