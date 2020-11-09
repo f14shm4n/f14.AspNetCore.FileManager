@@ -16,6 +16,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rules", "rules", "{418A3AEC
 		f14.Toolkit.ruleset = f14.Toolkit.ruleset
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A743DA65-2CE1-4690-B3F0-4FDB070CCF24}"
+	ProjectSection(SolutionItems) = preProject
+		JsonFormat.md = JsonFormat.md
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
