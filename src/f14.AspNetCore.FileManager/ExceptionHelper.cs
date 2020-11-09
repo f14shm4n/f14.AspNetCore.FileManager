@@ -14,7 +14,7 @@ namespace f14.AspNetCore.FileManager
         /// <param name="pathToDir">Path to the directory.</param>
         public static void ThrowIfDirectoryNotExists(string pathToDir)
         {
-            if (Directory.Exists(pathToDir))
+            if (!Directory.Exists(pathToDir))
             {
                 throw new InvalidOperationException("The directory not exists.");
             }

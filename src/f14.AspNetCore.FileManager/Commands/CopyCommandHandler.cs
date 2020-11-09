@@ -10,7 +10,7 @@ namespace f14.AspNetCore.FileManager.Commands
     /// <summary>
     /// Represents a command handler for <see cref="CopyCommand"/>.
     /// </summary>
-    public sealed class CopyCommandHandler : AsyncRequestHandler<MoveCommand>
+    public sealed class CopyCommandHandler : AsyncRequestHandler<CopyCommand>
     {
         private readonly IWebHostEnvironment _env;
 
@@ -24,7 +24,7 @@ namespace f14.AspNetCore.FileManager.Commands
         }
 
         ///<inheritdoc/>
-        protected override Task Handle(MoveCommand command, CancellationToken cancellationToken)
+        protected override Task Handle(CopyCommand command, CancellationToken cancellationToken)
         {
             string srcDirPath = PathHelper.GetFullPath(_env.WebRootPath, command.SourceDirectory);
             string dstDirPath = PathHelper.GetFullPath(_env.WebRootPath, command.CurrentFolderPath);
@@ -37,7 +37,7 @@ namespace f14.AspNetCore.FileManager.Commands
 
             if (command.IsFile)
             {
-                File.Move(srcObjPath, dstObjPath, command.Overwrite);
+                File.Copy(srcObjPath, dstObjPath, command.Overwrite);
             }
             else
             {

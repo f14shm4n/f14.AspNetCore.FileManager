@@ -13,7 +13,7 @@ namespace f14.AspNetCore.FileManager
         /// </summary>
         /// <param name="name">Provided name for file or folder.</param>
         /// <returns>True - is valid; false - not valid.</returns>
-        public static bool IsValidFolderOrFileName(string name) => name.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0;
+        public static bool IsValidFolderOrFileName(string name) => name.IndexOfAny(Path.GetInvalidFileNameChars()) == -1;
 
         /// <summary>
         /// Returns the path start with rootPath.
