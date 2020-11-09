@@ -1,23 +1,11 @@
-﻿using f14.AspNetCore.FileManager;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using Xunit.Abstractions;
+﻿using Xunit;
 
-namespace FMTests
+namespace f14.AspNetCore.FileManager.Tests
 {
     public class PathHelperTest
     {
         const string ROOT_PATH = "C:\\Temp";
         const string PATH_RELATIVE = "folder";
-
-        private ITestOutputHelper Log;
-
-        public PathHelperTest(ITestOutputHelper log)
-        {
-            Log = log;
-        }
 
         [Theory]
         [InlineData("")]
@@ -29,8 +17,6 @@ namespace FMTests
         public void RelativePath(string path)
         {
             var finalPath = PathHelper.GetFullPath(ROOT_PATH, path);
-
-            Log.WriteLine("Input: {0} Result: {1}", path, finalPath);
 
             if (string.IsNullOrWhiteSpace(path) || path == "/" || path == "\\")
             {
