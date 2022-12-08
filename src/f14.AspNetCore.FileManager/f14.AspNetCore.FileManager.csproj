@@ -33,7 +33,7 @@
     <PackageReference Include="f14.Common" Version="2.1.7.1" />
     <PackageReference Include="FluentValidation" Version="9.2.2" />
     <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
